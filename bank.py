@@ -10,3 +10,19 @@ class question_bank:
 
     def clear_questions(self):
         self.questions.clear()
+
+def main():
+    qb = question_bank()
+
+    while True:
+        question = input("Enter a question (or type 'quit' to stop): ")
+        if question.lower() == "quit":
+            break
+        qb.add_question(question)
+
+    print("\nYour Question Bank:")
+    for i, q in enumerate(qb.get_questions(), 1):
+        print(f"{i}. {q}")
+
+if __name__ == "__main__":
+    main()
