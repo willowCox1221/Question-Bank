@@ -12,7 +12,7 @@ class question_bank:
         self.questions.clear()
 
 
-def clear_question_bank(qb):
+def clear_question_bank(qb): #Clears the question bank
     while True:
         action = input("Do you want to clear the question bank? (yes/no): ")
         if action.lower() == "yes":
@@ -26,7 +26,7 @@ def clear_question_bank(qb):
             print("Invalid input, please type 'yes' or 'no'.")
 
 
-def add_questions(qb):
+def add_questions(qb): # Adds questions to the bank
     while True:
         question = input("Enter a question or type quit to stop: ")
         if question.lower() == "quit":
@@ -38,7 +38,7 @@ def add_questions(qb):
         print(f"{i}. {q}")
 
 
-def view_questions(qb):
+def view_questions(qb): #Views the current questions in the bank
     questions = qb.get_questions()
     if questions:
         print("Current questions in the bank:")
@@ -49,9 +49,9 @@ def view_questions(qb):
 
 
 def main():
-    qb = question_bank()  # ONE shared bank
+    qb = question_bank()  # Persistent question bank instance
     while True:
-        action = input("Do you want to add a question, view questions, clear the bank, or exit? (add/view/clear/exit): ")
+        action = input("Do you want to add a question, view questions, clear the bank, or exit? (add/view/clear/exit): \n")
         if action.lower() == "add":
             add_questions(qb)
         elif action.lower() == "view":
