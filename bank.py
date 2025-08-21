@@ -12,24 +12,7 @@ class question_bank:
         self.questions.clear()
 
 
-
-def main():
-    qb = question_bank()
-
-    while True:
-        question = input("Enter a question (or type 'quit' to stop): ")
-        if question.lower() == "quit":
-            break
-        qb.add_question(question)
-
-    print("\nYour Question Bank:")
-    for i, q in enumerate(qb.get_questions(), 1):
-        print(f"{i}. {q}")
-
-if __name__ == "__main__":
-    main()
-
-    qb = question_bank() ## Clears the question bank
+def clear_question_bank(qb):
     while True:
         action = input("Do you want to clear the question bank? (yes/no): ")
         if action.lower() == "yes":
@@ -41,3 +24,46 @@ if __name__ == "__main__":
             break
         else:
             print("Invalid input, please type 'yes' or 'no'.")
+
+
+def add_questions(qb):
+    while True:
+        question = input("Enter a question or type quit to stop: ")
+        if question.lower() == "quit":
+            break
+        qb.add_question(question)
+
+    print("\nYour Question Bank:")
+    for i, q in enumerate(qb.get_questions(), 1):
+        print(f"{i}. {q}")
+
+
+def view_questions(qb):
+    questions = qb.get_questions()
+    if questions:
+        print("Current questions in the bank:")
+        for i, q in enumerate(questions, 1):
+            print(f"{i}. {q}")
+    else:
+        print("No questions in the bank.")
+
+
+def main():
+    qb = question_bank()  # ONE shared bank
+    while True:
+        action = input("Do you want to add a question, view questions, clear the bank, or exit? (add/view/clear/exit): ")
+        if action.lower() == "add":
+            add_questions(qb)
+        elif action.lower() == "view":
+            view_questions(qb)
+        elif action.lower() == "clear":
+            clear_question_bank(qb)
+        elif action.lower() == "exit":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid input, please try again.")
+
+
+if __name__ == "__main__":
+    main()
