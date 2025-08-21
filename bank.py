@@ -11,6 +11,8 @@ class question_bank:
     def clear_questions(self):
         self.questions.clear()
 
+
+
 def main():
     qb = question_bank()
 
@@ -26,3 +28,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    qb = question_bank() ## Clears the question bank
+    while True:
+        action = input("Do you want to clear the question bank? (yes/no): ")
+        if action.lower() == "yes":
+            qb.clear_questions()
+            print("Question bank cleared.")
+            break
+        elif action.lower() == "no":
+            print("Question bank not cleared.")
+            break
+        else:
+            print("Invalid input, please type 'yes' or 'no'.")
